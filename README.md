@@ -63,8 +63,8 @@ Build and run the application.
 
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/a509667c-ca65-4134-805d-5f5b0c924cc9" style="width: 45%;">
-  <img src="https://github.com/user-attachments/assets/4eeb6a33-98b2-44f1-b70d-a73a4310e921" style="width: 45%;">
+  <img src="https://github.com/user-attachments/assets/a509667c-ca65-4134-805d-5f5b0c924cc9">
+  <img src="https://github.com/user-attachments/assets/4eeb6a33-98b2-44f1-b70d-a73a4310e921">
 </div>
 
 
