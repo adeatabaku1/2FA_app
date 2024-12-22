@@ -20,7 +20,6 @@ public class LoginMainActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
     private TextView signUpText;
-    private Button newButton;
     private DB db;
     private String generatedOtp;
 
@@ -33,7 +32,6 @@ public class LoginMainActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton=findViewById(R.id.loginButton);
         signUpText=findViewById(R.id.signUpText);
-        newButton=findViewById(R.id.newButton);
 
 
 
@@ -45,9 +43,6 @@ public class LoginMainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        newButton.setOnClickListener(view ->{
-            Toast.makeText(LoginMainActivity.this, "Button Clicked! ", Toast.LENGTH_SHORT).show();
-        });
         loginButton.setOnClickListener(view-> validateFields());
         loginButton.setOnClickListener(view -> {
             Toast.makeText(LoginMainActivity.this, "Button Clicked! ", Toast.LENGTH_SHORT).show();
