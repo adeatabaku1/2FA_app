@@ -24,7 +24,55 @@ public class LoginMainActivity extends AppCompatActivity {
     private DB db;
     private String generatedOtp;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
+        emailEditText = findViewById(R.id.emailEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
+        loginButton=findViewById(R.id.loginButton);
+        signUpText=findViewById(R.id.signUpText);
+        newButton=findViewById(R.id.newButton);
+
+
+
+        db = new DB(this);
+
+
+        signUpText.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginMainActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+
+        newButton.setOnClickListener(view ->{
+            Toast.makeText(LoginMainActivity.this, "Button Clicked! ", Toast.LENGTH_SHORT).show();
+        });
+        loginButton.setOnClickListener(view-> validateFields());
+        loginButton.setOnClickListener(view -> {
+            Toast.makeText(LoginMainActivity.this, "Button Clicked! ", Toast.LENGTH_SHORT).show();
+            String email = emailEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
+
+            if (!email.isEmpty() && !password.isEmpty()) {
+                if (db.validateUser(email, password)) {
+                    generatedOtp = generateOtp();
+                    sendEmail(email, generatedOtp);
+                    Intent intent = new Intent(LoginMainActivity.this, OtpVerificationActivity.class);
+                    intent.putExtra("otp", generatedOtp);
+                    intent.putExtra("email", email);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(LoginMainActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+
+                Toast.makeText(LoginMainActivity.this, "Please enter Email and Password", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
 
     private void validateFields() {
         String email = emailEditText.getText().toString().trim();
